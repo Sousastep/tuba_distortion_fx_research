@@ -13,19 +13,19 @@
         }
 
         :root {
-            --bg: #faf9f7;
-            --card-bg: #ffffff;
-            --text: #1a1a1a;
-            --text-muted: #555;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
-            --border: #e2e0dc;
-            --code-bg: #f3f2ef;
-            --warn-bg: #fef9e7;
-            --warn-border: #f5d76e;
-            --section-accent: #2563eb;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+            --bg: #161618;
+            --card-bg: #1e1e22;
+            --text: #e4e4e7;
+            --text-muted: #a1a1aa;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --border: #52525b;
+            --code-bg: #2a2a30;
+            --warn-bg: #3d3520;
+            --warn-border: #a38d2a;
+            --section-accent: #3b82f6;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
             --radius: 6px;
         }
 
@@ -50,7 +50,7 @@
             font-weight: 700;
             line-height: 1.25;
             margin-bottom: 0.75rem;
-            color: #111;
+            color: #f0f0f5;
             letter-spacing: -0.02em;
         }
 
@@ -64,7 +64,7 @@
             margin-bottom: 0.75rem;
             padding-bottom: 0.35rem;
             border-bottom: 2px solid var(--border);
-            color: #222;
+            color: #e4e4e7;
             letter-spacing: -0.01em;
             position: relative;
         }
@@ -89,7 +89,7 @@
             font-weight: 700;
             margin-top: 2rem;
             margin-bottom: 0.5rem;
-            color: #333;
+            color: #d4d4d8;
         }
 
         h4 {
@@ -97,7 +97,7 @@
             font-weight: 700;
             margin-top: 1.5rem;
             margin-bottom: 0.4rem;
-            color: #444;
+            color: #c4c4cc;
         }
 
         p {
@@ -154,15 +154,15 @@
             font-size: 0.85rem;
             margin-top: 0.05rem;
         }
-        .meta-icon.project  { background: #e8f0fe; color: #2563eb; }
-        .meta-icon.goal    { background: #fef3e4; color: #b45309; }
-        .meta-icon.chain   { background: #ecfdf3; color: #059669; }
+        .meta-icon.project  { background: #1e3a5f; color: #3b82f6; }
+        .meta-icon.goal    { background: #3d2a15; color: #f59e0b; }
+        .meta-icon.chain   { background: #1a3d2e; color: #34d399; }
         .header-meta .meta-label {
             font-weight: 700;
             font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: #666;
+            color: #a1a1aa;
             margin-bottom: 0.15rem;
         }
         .header-meta .meta-body {}
@@ -190,7 +190,7 @@
             margin-bottom: 0.4rem;
         }
         ul li::marker {
-            color: #999;
+            color: #666;
         }
 
         /* ===== Inline code ===== */
@@ -200,14 +200,14 @@
             background: var(--code-bg);
             padding: 0.15em 0.4em;
             border-radius: 3px;
-            color: #333;
+            color: #d4d4d8;
         }
 
         /* ===== Math / LaTeX display ===== */
         .math-inline {
             font-family: "Times New Roman", serif;
             font-style: italic;
-            background: #fafafa;
+            background: #2d2d33;
             padding: 0.05em 0.2em;
             border-radius: 2px;
         }
@@ -220,7 +220,7 @@
             border-left: 4px solid var(--warn-border);
             border-radius: 0 var(--radius) var(--radius) 0;
             font-size: 0.93rem;
-            color: #5c4b00;
+            color: #e5c94d;
         }
         blockquote p {
             margin-bottom: 0.5rem;
@@ -229,7 +229,41 @@
             margin-bottom: 0;
         }
         blockquote strong {
-            color: #8b6d00;
+            color: #f5d76e;
+        }
+
+        /* ===== Tables ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.25rem;
+            font-size: 0.9rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        thead {
+            background: #2d2d33;
+        }
+        th {
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #a1a1aa;
+            text-align: left;
+            padding: 0.6rem 0.85rem;
+            border-bottom: 2px solid var(--border);
+        }
+        td {
+            padding: 0.55rem 0.85rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            line-height: 1.55;
+        }
+        tbody tr:hover {
+            background: #2d2d33;
+        }
+        td:first-child, th:first-child {
+            white-space: nowrap;
         }
 
         /* ===== Card sections for each major candidate topology ===== */
@@ -248,7 +282,7 @@
         .topology-card h4 {
             margin-top: 0;
             font-size: 1.1rem;
-            color: #1a1a1a;
+            color: #e4e4e7;
         }
         .topology-card h4 .card-num {
             color: var(--accent);
@@ -274,8 +308,8 @@
 
         /* ===== Questions / call-out boxes ===== */
         .questions-box {
-            background: #f4f6fb;
-            border: 1px solid #d5ddf0;
+            background: #1e2a3d;
+            border: 1px solid #2d3d5f;
             border-radius: var(--radius);
             padding: 1rem 1.25rem;
             margin: 1.25rem 0;
@@ -284,7 +318,7 @@
             margin-top: 0;
             margin-bottom: 0.5rem;
             font-size: 0.95rem;
-            color: #334;
+            color: #c4d4e4;
         }
         .questions-box ol {
             margin-bottom: 0;
@@ -304,10 +338,10 @@
             border-radius: 3px;
             margin-right: 0.5rem;
         }
-        .tier-1 { background: #e8f5e9; color: #256029; }
-        .tier-2 { background: #e3f2fd; color: #154f94; }
-        .tier-3 { background: #fff3e0; color: #9c4d00; }
-        .tier-4 { background: #f3e5f5; color: #6a1b6a; }
+        .tier-1 { background: #1a3d2e; color: #4ade80; }
+        .tier-2 { background: #1a2d4d; color: #3b82f6; }
+        .tier-3 { background: #3d2a15; color: #f59e0b; }
+        .tier-4 { background: #3d1a3d; color: #c084fc; }
 
         /* ===== Experiment sequence steps ===== */
         .step-list {
@@ -446,14 +480,14 @@
         }
         .toc-nav-list a:hover {
             color: var(--accent);
-            background: #f4f6fb;
+            background: #2d2d3d;
         }
         .toc-nav-list a.active {
             color: var(--accent);
             font-weight: 700;
-            background: #f0f4ff;
+            background: #1e2d4d;
         }
-        .toc-h2 { font-weight: 600; font-size: 0.88rem; margin-top: 0.65rem; color: #111; }
+        .toc-h2 { font-weight: 600; font-size: 0.88rem; margin-top: 0.65rem; color: #e4e4e7; }
         .toc-h3 { padding-left: 1rem; font-size: 0.82rem; }
         .toc-h4 { padding-left: 2rem; font-size: 0.78rem; }
 
@@ -535,6 +569,24 @@
             <li><a href="#sec-7" class="toc-h2">7. Prioritized Reading List</a></li>
             <li><a href="#sec-8" class="toc-h2">8. Experiment Sequence</a></li>
             <li><a href="#sec-9" class="toc-h2">9. Open Questions</a></li>
+            <li><a href="#sec-airwindows" class="toc-h2">Airwindows Distortion Effects</a></li>
+            <li><a href="#sec-aw-identified" class="toc-h3">Effects Already Identified</a></li>
+            <li><a href="#sec-aw-12" class="toc-h3">12 Effects to Investigate</a></li>
+            <li><a href="#sec-aw-eff1" class="toc-h4">1. SingleEndedTriode</a></li>
+            <li><a href="#sec-aw-eff2" class="toc-h4">2. Shape</a></li>
+            <li><a href="#sec-aw-eff3" class="toc-h4">3. HardVacuum</a></li>
+            <li><a href="#sec-aw-eff4" class="toc-h4">4. Coils2</a></li>
+            <li><a href="#sec-aw-eff5" class="toc-h4">5. Pafnuty2</a></li>
+            <li><a href="#sec-aw-eff6" class="toc-h4">6. Inflamer</a></li>
+            <li><a href="#sec-aw-eff7" class="toc-h4">7. Focus</a></li>
+            <li><a href="#sec-aw-eff8" class="toc-h4">8. UnBox</a></li>
+            <li><a href="#sec-aw-eff9" class="toc-h4">9. Edge</a></li>
+            <li><a href="#sec-aw-eff10" class="toc-h4">10. Drive</a></li>
+            <li><a href="#sec-aw-eff11" class="toc-h4">11. Fracture2</a></li>
+            <li><a href="#sec-aw-eff12" class="toc-h4">12. Gringer</a></li>
+            <li><a href="#sec-aw-plan" class="toc-h3">Suggested Experiment Plan</a></li>
+            <li><a href="#sec-aw-excluded" class="toc-h3">Deliberately Excluded</a></li>
+            <li><a href="#sec-aw-honorable" class="toc-h3">Honorable Mentions</a></li>
         </ul>
     </nav>
 
@@ -865,9 +917,168 @@
         <li>Pre-clip EQ shaping (§4.6): which tuba formant band is the most rewarding to boost before clipping?</li>
     </ul>
 
-    <hr class="footer-rule">
+    <hr>
 
     <span class="status-badge">Status: outline only. No DSP code written. Use §7 as your reading roadmap and §8 as your build sequence.</span>
+
+    <hr>
+
+    <!-- ===== AIRWINDOWS SECTION ===== -->
+    <h2 id="sec-airwindows">Airwindows Distortion Effects for Dubstep Wobble&nbsp;Bass <a href="#sec-airwindows" class="anchor-link">#</a></h2>
+
+    <p>A list of Airwindows effects to investigate as <strong>pre-filter distortion</strong> in a dubstep wobble chain:</p>
+
+    <p><code>source (tuba/bass/synth) → [distortion] → resonant lowpass (LFO-modulated cutoff = wobble) → out</code></p>
+
+    <p><strong>Why distortion sits before the filter:</strong> distortion synthesizes dense upper harmonics from a (relatively sparse, fundamental-heavy) signal. The modulated lowpass then sweeps <em>through</em> those harmonics, producing the animated, evolving wobble timbre. With a clean source the filter has little to sweep over — distortion gives the filter a rich spectral substrate to sculpt. The 12 picks below are mapped to the seven topology families in <a href="#sec-4">§4</a> so you can A/B different <em>families</em> of color, not just different knobs.</p>
+
+    <p>Primary source for descriptions: <code>Airwindopedia.txt</code>. One-line summaries cross-checked against <code>what.txt</code>.</p>
+
+    <h3 id="sec-aw-identified">Effects You've Already Identified <a href="#sec-aw-identified" class="anchor-link">#</a></h3>
+
+    <p>These three already cover a lot — an input-stage saturator (Mackity), a sampler output clipper (ZOutputStage), and a full bass-amp-style multi-band drive (BassDrive). The 12 below fill in the <em>other</em> topology families.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Effect</th>
+                <th>What it is</th>
+                <th>Topology family</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Mackity</strong></td>
+                <td>Emulation of the input stage of a vintage (pre-VLZ) Mackie 1202 — "spongy slam and gleaming brain-fry overload," turns electronic music into "a wall of roaring shrapnel." Op-amp/input-stage saturation, not a stompbox.</td>
+                <td>Cascaded analog input-stage saturation (≈ 4.6)</td>
+            </tr>
+            <tr>
+                <td><strong>ZOutputStage</strong></td>
+                <td>The output clipping stage from the Emu e6400-style Z filters — analog-output hard-ish clipping with sampler character.</td>
+                <td>Hard clipping w/ analog character (≈ 4.2)</td>
+            </tr>
+            <tr>
+                <td><strong>BassDrive</strong></td>
+                <td>SansAmp-Bass-DI-inspired bass amp: biquad EQ bands voiced weirdly + heavy Airwindows overdrive inside each band. A multi-stage, pre/post-EQ bass distortion — "dark magic" secret weapon.</td>
+                <td>Cascaded multi-stage w/ pre/post-EQ (4.6) — purpose-built for bass</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 id="sec-aw-12">12 Effects to Investigate <a href="#sec-aw-12" class="anchor-link">#</a></h3>
+
+    <p>Ordered roughly from "workhorse/fattening" → "special-effect/extreme."</p>
+
+    <!-- Effect 1 -->
+    <div class="topology-card">
+        <h4 id="sec-aw-eff1"><span class="card-num">1.</span> SingleEndedTriode — asymmetric single-ended tube saturation <a href="#sec-aw-eff1" class="anchor-link">#</a></h4>
+        <p><span class="field-label">Topology:</span> §4.3 Asymmetric / "tube-ish" clipping (even harmonics → warmer, fatter).</p>
+        <p>Asymmetrical, gain-staged saturation that works like a single-ended triode stage: it offsets the waveform and drives into saturation with a <em>bias voltage</em>, then subtracts a related voltage and scales by drive amount. Because the shaping is asymmetric it injects <strong>even harmonics</strong> — exactly what the research flags as "very promising" for a fundamental-heavy source: it fattens the wobble's body and gives a warmer subharmonic presence without harsh odd-order coloration. A strong candidate for the "always-on" tube character layer.</p>
+    </div>
+
+    <!-- Effect 2 -->
+    <div class="topology-card">
+        <h4 id="sec-aw-eff2"><span class="card-num">2.</span> Shape — asymmetric sin/asin waveshaper for warmth <a href="#sec-aw-eff2" class="anchor-link">#</a></h4>
+        <p><span class="field-label">Topology:</span> §4.3 Asymmetric waveshaping (even harmonics).</p>
+        <p>Built on the same complementary <code>sin()</code>/<code>asin()</code> technology as Console, but lets you pick which half of the waveform to hit harder and offset it. The <strong>bass-warmth</strong> use case: more Shape → triangle-ey result out of a sine; less Shape → squarer result; lean the Offset to tune the even-harmonic warmth. Pair it with a sine-heavy source to turn a dull fundamental into a rich, sweepable substrate. Very transparent — stackable.</p>
+    </div>
+
+    <!-- Effect 3 -->
+    <div class="topology-card">
+        <h4 id="sec-aw-eff3"><span class="card-num">3.</span> HardVacuum — tube-style saturation <a href="#sec-aw-eff3" class="anchor-link">#</a></h4>
+        <p><span class="field-label">Topology:</span> §4.7 Tape/tube saturation emulation (gentle, level-dependent).</p>
+        <p>"Tube style saturation effects" — the gentle, dynamic overdrive family the research calls a good "always-on" layer. Low-order, mostly odd with gentle even content. Like most tube/saturation emulations it is level-dependent (more drive = more harmonic content), so the color intensifies with the player's dynamics rather than sitting as a static wall — the kind of "always-on" gentle overdrive the research's §4.7 recommends for fattening without obvious clipping.</p>
+    </div>
+
+    <!-- Effect 4 -->
+    <div class="topology-card">
+        <h4 id="sec-aw-eff4"><span class="card-num">4.</span> Coils2 — transformer overdrive / hysteresis emulator <a href="#sec-aw-eff4" class="anchor-link">#</a></h4>
+        <p><span class="field-label">Topology:</span> §4.7 Saturation (transformer, distinct from tube).</p>
+        <p>Two controls: <strong>Saturation</strong> (how hard the transformer clamps down) and <strong>Cheapness</strong> (narrows the band of clean sonority so you hear the transformer "crap out," with a core magnetizing/hysteresis effect). It's a different saturation <em>character</em> from tube — bandpass-y, grindy, with hysteresis. Useful as a contrasting color stacked with a tube plugin, and the band-narrowing means you can keep some clean lows/highs around the distorted band — handy for keeping the lowest wobble octave intact.</p>
+    </div>
+
+    <!-- Effect 5 -->
+    <div class="topology-card">
+        <h4 id="sec-aw-eff5"><span class="card-num">5.</span> Pafnuty2 — Chebyshev harmonic generator <a href="#sec-aw-eff5" class="anchor-link">#</a></h4>
+        <p><span class="field-label">Topology:</span> §2.1 Waveshaping theory (Chebyshev decomposition) — the <em>theory core</em>.</p>
+        <p>A Chebyshev-based filter that <strong>adds harmonics deliberately and predictably</strong>. The outline's Tier-1 reading (Arfib 1979, LeBrun 1979) is literally about designing the added harmonic series via Chebyshev polynomials — this is that idea in plugin form. The key trick: add <em>just a few</em> odd harmonics and, since you're not really saturating but transforming, you get <strong>zero aliasing</strong> as long as the added harmonics stay below Nyquist. That matters a lot for low fundamentals (tuba pedal notes ~29–50 Hz), where the research warns intermodulation/aliasing is the real danger. A clean, predictable harmonic-substrate generator for the filter to sweep.</p>
+    </div>
+
+    <!-- Effect 6 -->
+    <div class="topology-card">
+        <h4 id="sec-aw-eff6"><span class="card-num">6.</span> Inflamer — Oxford-Inflator-style waveshapers <a href="#sec-aw-eff6" class="anchor-link">#</a></h4>
+        <p><span class="field-label">Topology:</span> §2.1 / §4.1 Waveshaping (manual curve blend + bit-shift drive).</p>
+        <p>An Airwindows take on the Oxford Inflator: two waveshapers blended via a manual <strong>Effect</strong> control (a dry/wet between the two curves), with <strong>Drive</strong> done as bit-shift input gain (very accurate divisions by powers of two). Drive sets how hard the shapers are hit; Effect lets you pick the curve color manually. This gives a controllable, sonically-optimized harmonic boost — not a static clip — where you can separately dial <em>intensity</em> (Drive) and <em>character</em> (Effect).</p>
+    </div>
+
+    <!-- Effect 7 -->
+    <div class="topology-card">
+        <h4 id="sec-aw-eff7"><span class="card-num">7.</span> Focus — bandpass-focused multi-algorithm distortion <a href="#sec-aw-eff7" class="anchor-link">#</a></h4>
+        <p><span class="field-label">Topology:</span> §4.6 Cascaded/multi-stage w/ pre/post-EQ <strong>+</strong> §5 anti-aliasing — likely the best all-in-one.</p>
+        <p>Built on <strong>UnBox</strong>'s aliasing-resistant distortion, but focuses it on a <strong>bandpass</strong> (voiced around Fletcher-Munson sensitivity) while letting clean lows and highs pass through. On top of that it lets you switch between five Airwindows distortion algorithms — <strong>Density, Drive, Spiral, Mojo, Dyno</strong> — and dial the Focus band from "broad overdrive" down to an "ultra-focussed mid laser." This is almost a direct implementation of the research's §4.6 conclusion ("probably the real winner"): pre-clip band emphasis + clean low-end retention + aliasing resistance, in one plugin. If you only audition one plugin from this list, make it this one.</p>
+    </div>
+
+    <!-- Effect 8 -->
+    <div class="topology-card">
+        <h4 id="sec-aw-eff8"><span class="card-num">8.</span> UnBox — aliasing-resistant distortion <a href="#sec-aw-eff8" class="anchor-link">#</a></h4>
+        <p><span class="field-label">Topology:</span> §5 Anti-aliasing for nonlinearities — "only harmonics that don't alias are allowed to distort."</p>
+        <p>Takes the dry→distorted difference, averages it, and highpasses the <em>distortion part</em> only, so high-frequency artifacts that would alias are suppressed while clean lows/highs pass untouched. The research's §5 is explicit that for low fundamentals + hard nonlinear topologies, anti-aliasing/oversampling is <em>mandatory, not optional</em> — UnBox is the Airwindows answer to that constraint without brute oversampling. Useful both on its own and as the conceptual parent of Focus (#7).</p>
+    </div>
+
+    <!-- Effect 9 -->
+    <div class="topology-card">
+        <h4 id="sec-aw-eff9"><span class="card-num">9.</span> Edge — seven-stage hard clipping with inter-stage filtering <a href="#sec-aw-eff9" class="anchor-link">#</a></h4>
+        <p><span class="field-label">Topology:</span> §4.6 Cascaded multi-stage w/ inter-stage filtering (high-gain variant).</p>
+        <p>Seven stages of hard clipping with <strong>Hypersonic-style steep filtering between each stage</strong>, plus a Lowpass tone control (doubles as the ultrasonic/aliasing filter and can be set from 25 kHz down into deep bass). This is the high-gain, guitar-DI-system flavor of "cascaded clipper with tone shaping between stages" — the structure the research says sculpts <em>which harmonics survive into the filter</em>. Crank it for the "filthy" open-filter extreme; the inter-stage phase shifts give a distinctive resonant-ish tone at the cutoff.</p>
+    </div>
+
+    <!-- Effect 10 -->
+    <div class="topology-card">
+        <h4 id="sec-aw-eff10"><span class="card-num">10.</span> Drive — pure aggressive / "angry" distortion <a href="#sec-aw-eff10" class="anchor-link">#</a></h4>
+        <p><span class="field-label">Topology:</span> §4.1–4.2 Soft/hard clipping — grit &amp; crunch.</p>
+        <p>"All about grit and crunch, not smooth." If your sole goal is "big and fat" you'd reach for Density; Drive is for when you want something to sound <strong>angry</strong> — straight-up pissed-off rather than fat or edgy. A simple, characterful workhorse for the bright, aggressive end of the wobble when the filter opens up. (Note: Drive is also one of the five algorithms inside Focus #7, so audition it there first if you want to A/B quickly.)</p>
+    </div>
+
+    <!-- Effect 11 -->
+    <div class="topology-card">
+        <h4 id="sec-aw-eff11"><span class="card-num">11.</span> Fracture2 — West Coast wavefolder <a href="#sec-aw-eff11" class="anchor-link">#</a></h4>
+        <p><span class="field-label">Topology:</span> §4.4 Foldback distortion (inharmonic, metallic/FM-ish growl).</p>
+        <p>A straight-up West Coast <strong>wavefolder</strong> with Drive, Fracture, Threshold, Output and Dry/Wet. Folding produces dense, partly <em>inharmonic</em> content and intermodulation — chaotic at high drive. The research calls foldback a "special-effect, use sparingly" topology that can yield an interesting metallic, "FM-ish" growl — a deliberate "breakdown" color rather than the default wobble. Great for a contrasting section or a gnarlier second layer; watch ghost-note interaction if your source has inharmonic resonances.</p>
+    </div>
+
+    <!-- Effect 12 -->
+    <div class="topology-card">
+        <h4 id="sec-aw-eff12"><span class="card-num">12.</span> Gringer — full-wave rectifier / octave-up (Green&nbsp;Ringer) <a href="#sec-aw-eff12" class="anchor-link">#</a></h4>
+        <p><span class="field-label">Topology:</span> §4.3-adjacent special color (even-harmonic / octave generation).</p>
+        <p>No-controls emulation of the Dan Armstrong Green Ringer: <strong>full-wave rectification</strong>, which generates the octave (2nd harmonic) above the input — the classic octave-up-fuzz bass trick. With wide-bandwidth biquads mimicking analog I/O caps. A distinctive even-harmonic color that can make a bass/tuba wobble read as more "synth"/"reese"-like. Special-effect territory like Fracture2 — try it on a parallel bus rather than the main chain.</p>
+    </div>
+
+    <h3 id="sec-aw-plan">Suggested Experiment Plan <a href="#sec-aw-plan" class="anchor-link">#</a></h3>
+
+    <ol class="step-list">
+        <li><strong>Start with Focus (#7)</strong> — it covers five algorithms + bandpass focus + anti-aliasing in one plugin, so it's the fastest way to map which <em>topology family</em> your source responds to.</li>
+        <li><strong>Add an even-harmonic layer</strong> (#1 SingleEndedTriode, #2 Shape, or #3 HardVacuum) for body/warmth — the research flags even-harmonic injection as very promising for a fundamental-heavy source.</li>
+        <li><strong>Test aliasing on low fundamentals</strong> (#5 Pafnuty2 for alias-free harmonic injection, #8 UnBox for aliasing-resistant clipping) — the §5 caveat about intermodulation at ~29–50 Hz is the main technical risk.</li>
+        <li><strong>Reserve the special colors</strong> (#11 Fracture2, #12 Gringer) for breaks/parallel layers, not the default wobble.</li>
+        <li><strong>Full-chain test:</strong> each candidate → your resonant lowpass with a slow LFO sweep; rate clarity of the lowest octave, "sweep interest," and harshness/clangor at high resonance + high drive (per the outline's §6 rubric).</li>
+    </ol>
+
+    <h3 id="sec-aw-excluded">Deliberately Excluded: Bitcrushing / Decimation (Topology&nbsp;4.5) <a href="#sec-aw-excluded" class="anchor-link">#</a></h3>
+
+    <p>The research outline classifies bitcrushing/decimation as <strong>"niche… a taste color, not a wobble main"</strong> — the inharmonic aliasing it produces fights the harmonic-series premise the wobble relies on. For that reason no bitcrusher (e.g. <strong>DeRez4</strong>, <strong>BitGlitter</strong>, <strong>Pockey2</strong>) appears in the 12 above. If you want a deliberately digital/lo-fi textural layer on a <em>parallel</em> bus for a breakdown section, DeRez4 is the most refined of the Airwindows retro-digital crushers and is worth a listen in that limited role.</p>
+
+    <h3 id="sec-aw-honorable">Honorable Mentions <a href="#sec-aw-honorable" class="anchor-link">#</a></h3>
+
+    <p>Covered by, or adjacent to, the twelve above:</p>
+    <ul>
+        <li><strong>Spiral2</strong> — "the best smoothest distortion algorithm," with a Presence control; also one of the five algorithms inside Focus.</li>
+        <li><strong>Density3</strong> — swiss-army-knife saturation/antisaturation; also an algorithm inside Focus.</li>
+        <li><strong>Trianglizer</strong> — waveshaper that turns sines into triangles (controlled odd-harmonic injection); a more specialized alternative to Pafnuty2.</li>
+        <li><strong>Distortion</strong> — "slightly dark analog-style distortion with several presets, like Focus"; a simpler, darker cousin of Focus.</li>
+        <li><strong>MultiBandDistortion</strong> — "old weird gnarly sound wrecker"; worth a listen if you want deliberately ugly, lo-fi-mangled wobble.</li>
+    </ul>
+
+    <hr class="footer-rule">
 
 </div> <!-- end container -->
 </div> <!-- end page-wrapper -->
