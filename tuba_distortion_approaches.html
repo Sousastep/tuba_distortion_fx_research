@@ -103,7 +103,9 @@
     min-width: 0;
     padding: 3rem 4rem 6rem;
   }
-  .content { max-width: 78ch; margin: 0 auto; }
+  /* overflow-wrap also covers bare URLs in plain text (e.g. the Attributions
+     prompt), which are not inside links. */
+  .content { max-width: 78ch; margin: 0 auto; overflow-wrap: anywhere; }
 
   /* ---------- Typography ---------- */
   h1, h2, h3, h4 {
@@ -128,7 +130,14 @@
   strong { color: var(--heading); font-weight: 650; }
   em { color: #e9ebf0; }
 
-  a { color: var(--link); text-decoration: none; border-bottom: 1px solid rgba(127, 179, 240, 0.35); }
+  a {
+    color: var(--link);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(127, 179, 240, 0.35);
+    /* Long, unbroken URLs (e.g. in the references) must wrap instead of
+       stretching the page width on narrow screens. */
+    overflow-wrap: anywhere;
+  }
   a:hover { border-bottom-color: var(--link); }
 
   ul, ol { padding-left: 1.5rem; margin: 0 0 1.2rem; }
@@ -636,10 +645,17 @@ Create a .md file describing a few different approaches to adding distortion eff
     var a = byId[id];
     if (!a) return;
     a.classList.add('active');
+    // Only keep the active entry in view when the sidebar is its own scrolling
+    // column (the sticky desktop layout). On mobile it sits in the normal
+    // document flow at the top of the page, so scrolling it here would also
+    // drag the window back to the top on every scroll-spy update.
+    if (!window.matchMedia('(min-width: 901px)').matches) return;
     var nav = a.closest('nav');
     var r = a.getBoundingClientRect(), nr = nav.getBoundingClientRect();
     if (r.top < nr.top + 40 || r.bottom > nr.bottom - 40) {
-      a.scrollIntoView({ block: 'center' });
+      // Scroll the nav itself instead of scrollIntoView, which would also
+      // scroll the window.
+      nav.scrollTop += r.top - nr.top - (nav.clientHeight - r.height) / 2;
     }
   }
 
