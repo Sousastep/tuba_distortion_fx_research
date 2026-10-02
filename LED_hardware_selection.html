@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#101318">
+  <title>Hardware guide: 200-LED audio-reactive spiral</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101318;
+      --panel: #171c24;
+      --panel-raised: #1d2430;
+      --text: #e6eaf0;
+      --muted: #a3adba;
+      --line: #303947;
+      --accent: #78d6c6;
+      --link: #8bc7ff;
+      --code: #202733;
+      --sidebar-width: 17rem;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.72;
+    }
+    a { color: var(--link); text-decoration-thickness: .08em; text-underline-offset: .18em; }
+    a:hover { color: var(--accent); }
+    a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 3px; }
+
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: var(--sidebar-width);
+      padding: 2rem 1.25rem 2rem 1.5rem;
+      overflow-y: auto;
+      background: var(--panel);
+      border-right: 1px solid var(--line);
+    }
+    .site-title { display: block; margin-bottom: .35rem; color: var(--text); font-size: 1rem; font-weight: 750; line-height: 1.35; text-decoration: none; }
+    .site-subtitle { margin: 0 0 1.5rem; color: var(--muted); font-size: .84rem; }
+    .toc-heading { margin: 0 0 .65rem; color: var(--muted); font-size: .72rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    .toc-list { margin: 0; padding: 0; list-style: none; }
+    .toc-list li { margin: .12rem 0; }
+    .toc-list a {
+      display: block;
+      padding: .36rem .55rem;
+      border-radius: .4rem;
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.4;
+      text-decoration: none;
+    }
+    .toc-list a:hover, .toc-list a:focus-visible { background: var(--panel-raised); color: var(--text); }
+    .toc-list .sub a { padding-left: 1.25rem; font-size: .8rem; }
+    .mobile-toc { display: none; }
+
+    .content-wrap { min-height: 100vh; margin-left: var(--sidebar-width); padding: 3.25rem clamp(1.25rem, 5vw, 5rem) 5rem; }
+    main { width: min(100%, 57rem); margin: 0 auto; }
+    .eyebrow { margin: 0 0 .5rem; color: var(--accent); font-size: .78rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    h1, h2, h3 { color: #f4f6f9; line-height: 1.25; scroll-margin-top: 1.5rem; }
+    h1 { max-width: 14ch; margin: 0 0 1.25rem; font-size: clamp(2.25rem, 5vw, 3.5rem); letter-spacing: -.045em; }
+    h2 { margin: 3.1rem 0 1rem; padding-bottom: .55rem; border-bottom: 1px solid var(--line); font-size: clamp(1.45rem, 3vw, 1.9rem); letter-spacing: -.025em; }
+    h3 { margin: 2rem 0 .75rem; font-size: 1.18rem; }
+    p { margin: .8rem 0 1rem; }
+    strong { color: #f2f5f8; }
+    ul, ol { padding-left: 1.4rem; }
+    li { padding-left: .15rem; margin: .48rem 0; }
+    li::marker { color: var(--accent); }
+    code { padding: .13em .35em; border: 1px solid var(--line); border-radius: .3rem; background: var(--code); color: #d4e7ff; font-size: .9em; }
+    pre { overflow-x: auto; padding: 1rem 1.15rem; border: 1px solid var(--line); border-radius: .65rem; background: var(--code); line-height: 1.55; }
+    pre code { padding: 0; border: 0; background: transparent; color: #dce8f5; }
+    blockquote, .callout { margin: 1.25rem 0; padding: .85rem 1rem; border-left: 3px solid var(--accent); border-radius: 0 .5rem .5rem 0; background: var(--panel); }
+    .table-wrap { margin: 1.2rem 0; overflow-x: auto; border: 1px solid var(--line); border-radius: .65rem; }
+    table { width: 100%; border-collapse: collapse; min-width: 42rem; font-size: .92rem; }
+    th, td { padding: .8rem .9rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: var(--panel-raised); color: #f4f6f9; font-size: .82rem; letter-spacing: .03em; }
+    tr:last-child td { border-bottom: 0; }
+    .reference-list li { overflow-wrap: anywhere; }
+    .page-footer { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+
+    @media (max-width: 850px) {
+      .sidebar { display: none; }
+      .content-wrap { margin-left: 0; padding: 1.5rem clamp(1rem, 5vw, 2rem) 3.5rem; }
+      main { width: min(100%, 57rem); }
+      .mobile-toc {
+        display: block;
+        margin: 0 0 2rem;
+        border: 1px solid var(--line);
+        border-radius: .65rem;
+        background: var(--panel);
+      }
+      .mobile-toc summary { padding: .75rem 1rem; color: var(--text); cursor: pointer; font-weight: 700; }
+      .mobile-toc .toc-list { padding: 0 .75rem .8rem; }
+      .mobile-toc .toc-list a { padding-top: .48rem; padding-bottom: .48rem; }
+      h2 { margin-top: 2.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar" aria-label="Document navigation">
+    <a class="site-title" href="#top">200-LED Spiral</a>
+    <p class="site-subtitle">Audio-reactive hardware guide</p>
+    <nav aria-label="Table of contents">
+      <p class="toc-heading">On this page</p>
+      <ul class="toc-list">
+        <li><a href="#short-recommendation">Short recommendation</a></li>
+        <li><a href="#reference-code">What the reference code tells us</a></li>
+        <li><a href="#microcontroller">Choosing a microcontroller</a></li>
+        <li class="sub"><a href="#candidate-comparison">Candidate comparison</a></li>
+        <li><a href="#leds">Selecting the LEDs and output arrangement</a></li>
+        <li class="sub"><a href="#power-wiring">Power and wiring budget</a></li>
+        <li><a href="#microphone">Selecting an I2S microphone</a></li>
+        <li><a href="#battery">Rechargeable battery and runtime sizing</a></li>
+        <li><a href="#test-plan">A low-risk selection and test plan</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="content-wrap">
+    <main id="top">
+      <details class="mobile-toc">
+        <summary>On this page</summary>
+        <nav aria-label="Mobile table of contents">
+          <ul class="toc-list">
+            <li><a href="#short-recommendation">Short recommendation</a></li>
+            <li><a href="#reference-code">What the reference code tells us</a></li>
+            <li><a href="#microcontroller">Choosing a microcontroller</a></li>
+            <li class="sub"><a href="#candidate-comparison">Candidate comparison</a></li>
+            <li><a href="#leds">Selecting the LEDs and output arrangement</a></li>
+            <li class="sub"><a href="#power-wiring">Power and wiring budget</a></li>
+            <li><a href="#microphone">Selecting an I2S microphone</a></li>
+            <li><a href="#battery">Rechargeable battery and runtime sizing</a></li>
+            <li><a href="#test-plan">A low-risk selection and test plan</a></li>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </nav>
+      </details>
+
+      <p class="eyebrow">Hardware selection guide</p>
+      <h1>200-LED audio-reactive spiral</h1>
+      <p>This guide uses <code>SousaVFX.ino</code>, <code>coordinate_maps.h</code>, and <code>palettes.h</code> as the starting point for choosing hardware. It is a selection and validation guide, not a drop-in port: the existing sketch is written for a Teensy 3.2 and OctoWS2811.</p>
+
+      <section aria-labelledby="short-recommendation">
+        <h2 id="short-recommendation">Short recommendation</h2>
+        <p>Prototype with an <strong>ESP32-S3 development board</strong>, an <strong>I2S digital MEMS microphone</strong>, and <strong>5 V WS2812B-compatible pixels</strong>, arranged as eight independently driven 25-pixel strands. Use the ESP32-S3's I2S peripheral for the microphone and a tested parallel LED backend (for example, FastLED's ESP32 parallel-I2S backend) for the eight LED data lanes. Confirm that the exact board/core/library combination permits both peripherals simultaneously before buying final wiring or committing to a board revision.</p>
+        <p>An <strong>Adafruit Feather RP2040 SCORPIO</strong> is an attractive alternative if built-in eight-lane WS2812 output is the top priority: its PIO-based NeoPXL8 driver supports eight outputs concurrently, and has a 3.3-to-5 V level shifter. But RP2040 has no dedicated I2S peripheral, so I2S microphone input uses a PIO/software implementation and may compete with the LED driver's PIO resources. Test that combination early; the ESP32-S3 is the simpler choice when I2S audio is a firm requirement.</p>
+      </section>
+
+      <section aria-labelledby="reference-code">
+        <h2 id="reference-code">What the reference code tells us</h2>
+        <ul>
+          <li>The current source defines <strong>8 strips × 26 pixels = 208 LEDs</strong> (<code>ledsPerStrip</code>, <code>numStrips</code>, and <code>NUM_LEDS</code>). Its own comments say the map was meant for eight rows of 25, with an extra pixel added. The new installation is <strong>8 × 25 = 200 LEDs</strong>. Update the dimensions consistently and regenerate or carefully remap the coordinate tables for the new physical curves; do not just change a loop bound and leave 208-entry mappings in use.</li>
+          <li>Each rendered frame loops over all 208 LEDs, doing floating-point phase/radius work, lookup-table easing and integer color scaling. The high-resolution map includes several arrays of <code>float</code>; the LED colors themselves occupy only 3 bytes per pixel (about 600 bytes for 200 LEDs). The coordinate tables and driver buffers add more RAM, but 200 pixels is a small buffer for modern boards.</li>
+          <li>The sketch's <strong>260 FPS</strong> interval is about <strong>3.85 ms</strong>. At <strong>60 FPS</strong>, one frame is available every <strong>16.67 ms</strong>, and there are only about <strong>12,000 pixel iterations per second</strong> (200 × 60), versus about 54,000 for 208 × 260. Reducing the target frame rate therefore cuts this loop workload by over four times. There is no reason to select a high-end processor for this pixel count; reliable LED timing, enough GPIO/peripheral resources, microphone support, and power delivery matter more.</li>
+          <li>This is an estimate from source structure, not a benchmark: actual frame time depends on compiler, LED library, audio processing, and other tasks. Measure render time on the chosen board and target a comfortable margin under 16.67 ms.</li>
+          <li>The reference code does <strong>not</strong> currently read a microphone or calculate audio amplitude; the I2S capture and amplitude/envelope logic will be new code.</li>
+          <li>Rendering is currently gated by <code>newData</code>, which is set by the serial parameter receiver. For a standalone audio-reactive build, schedule rendering from a 60 FPS timer (or equivalent) independently of serial input, and update the animation parameters from microphone samples.</li>
+          <li><code>MAX_POWER_MW</code> is set to <strong>40,000 mW (40 W)</strong> in the sketch. Treat that as a software brightness/power estimate, <strong>not</strong> as a current limiter or electrical protection device.</li>
+          <li>The existing <code>OctoWS2811</code> output code is Teensy-specific. Keep the effect and palette logic where practical, but replace the LED transfer/output setup for the target board. Also check the LED mapping and the configured LED type/color order against the actual purchased pixels.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="microcontroller">
+        <h2 id="microcontroller">Choosing a microcontroller</h2>
+        <p>Look for all of these:</p>
+        <ol>
+          <li><strong>Enough compute headroom:</strong> a 32-bit MCU with a hardware LED peripheral or DMA support. The render math is modest at 60 FPS, but hardware-driven outputs avoid wasting CPU on exact WS2812 pulse timing.</li>
+          <li><strong>Eight outputs, or a viable way to provide them:</strong> each physical strand should be its own data lane if all eight are to update together. Check the board's <em>available transmitter</em> channels/backend limits, not only its total GPIO count. If outputs are grouped or serialized, confirm their combined transmit time still leaves room in the 16.67 ms frame.</li>
+          <li><strong>Digital I2S receive:</strong> confirm that the MCU has I2S input and that the selected library/framework can run it concurrently with LED output. DMA-based continuous sampling is preferable.</li>
+          <li><strong>Enough pins, memory, and software support:</strong> reserve the microphone clock/data pins and eight pixel pins (plus any controls), verify board voltage levels, and confirm FastLED or an equivalent driver supports the board and chosen LED type.</li>
+          <li><strong>Actual total cost and availability:</strong> compare the assembled development board and required level shifters, driver hardware, regulator, and charger—not just the bare chip price.</li>
+        </ol>
+
+        <h3 id="candidate-comparison">Candidate comparison</h3>
+        <div class="table-wrap" role="region" aria-label="Microcontroller candidate comparison" tabindex="0">
+          <table>
+            <thead><tr><th scope="col">Candidate</th><th scope="col">Why consider it</th><th scope="col">Main caveat</th></tr></thead>
+            <tbody>
+              <tr><td><strong>ESP32-S3 development board</strong> (recommended starting point)</td><td>Dual-core up to 240 MHz, 512 KB internal SRAM, single-precision FPU, hardware I2S, and RMT/DMA peripherals. FastLED documents a parallel-I2S backend for ESP32-S3, suitable for many same-timing LED lanes.</td><td>ESP32-S3 has four RMT transmit channels, not eight; do not assume eight independent RMT outputs. Prefer a confirmed parallel-I2S backend for eight lanes, or transmit in groups and benchmark. The LED backend's I2S use must coexist with the microphone on a separate I2S controller. Confirm specific Arduino-ESP32/FastLED versions and GPIO assignments.</td></tr>
+              <tr><td><strong>Adafruit Feather RP2040 SCORPIO</strong></td><td>RP2040 at about 125 MHz, 264 KB RAM, eight concurrent PIO/DMA NeoPixel outputs, and onboard 3.3-to-5 V shifting on those outputs. NeoPXL8 examples cover one to eight strands.</td><td>No dedicated I2S hardware. An I2S-over-PIO microphone driver may work, but PIO state-machine/resource conflicts with the eight-lane driver must be tested.</td></tr>
+              <tr><td><strong>Teensy 4.0</strong></td><td>600 MHz Cortex-M7 with FPU, hardware I2S, and OctoWS2811 support; a relatively easy conceptual migration from Teensy code.</td><td>Not necessarily cheaper than an ESP32-S3 board; validate the exact LED/audio peripheral sharing and eight-lane implementation.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The Teensy 3.2 itself is discontinued, so it is not a good choice for a new build even if a leftover board is available. For exact specifications and current framework details, see the reference links below.</p>
+      </section>
+
+      <section aria-labelledby="leds">
+        <h2 id="leds">Selecting the LEDs and output arrangement</h2>
+        <ul>
+          <li><strong>For least code change, start with 5 V WS2812B-compatible RGB pixels/strips.</strong> FastLED already handles the palette/rendering style, and this retains a one-wire data lane per strand. Buy from a seller that provides a datasheet and identifies the actual controller and color order; generic “WS2812-compatible” parts can differ in timing and voltage behavior.</li>
+          <li>Use <strong>eight separate 25-pixel strands</strong>, each with its own data output, arranged along the eight curves. Connect their grounds to the controller ground. Feed power in parallel; do not try to power all LEDs through the MCU board or connect the strips as a single physical chain unless the chosen mapping and output arrangement are designed for it.</li>
+          <li>For 800 kHz WS2812-style signaling, 25 pixels need about <strong>0.75 ms of data time per lane</strong> (25 × 24 bits × 1.25 µs). Eight lanes sent in parallel take about that much data time; if sent one after another, the payload is about 6 ms before reset gaps. Both are nominally compatible with a 16.67 ms 60 FPS period, but include reset time, rendering, microphone work, and library behavior in the actual timing test.</li>
+          <li>Other addressable pixels can work, but check protocol and library support. SK6812 RGBW pixels use a different pixel format from RGB WS2812B. Clocked pixels such as APA102/SK9822 avoid strict one-wire timing but require clock and data wiring (potentially 16 signals for eight independent strands) and may use more pins. Choosing another LED family does not remove the need to size the power system.</li>
+          <li>Update the code to <strong>200 LEDs / 25 per strand</strong> and remap the existing coordinate arrays to the actual curve layout. Each strand's LED order and start/end direction must match the indices used by the render code. Regenerate the map if the curves or pixel spacing differ.</li>
+        </ul>
+
+        <h3 id="power-wiring">Power and wiring budget for 5 V RGB pixels</h3>
+        <p>Use the specific pixel datasheet and measure your built effect. As a conservative WS2812B-style planning figure, allow up to <strong>60 mA per pixel</strong> at full-white maximum brightness:</p>
+        <ul>
+          <li>200 × 60 mA = <strong>12 A at 5 V</strong>, or <strong>60 W</strong> theoretical maximum.</li>
+          <li>The reference sketch has a 40 W software cap, equivalent to about <strong>8 A at 5 V</strong> if that estimate matches the selected pixels. Use a regulated supply and wiring sized for the electrical worst case you intend to permit, not just for a software setting.</li>
+          <li>Adafruit's rough animation estimate is 20 mA per pixel: about <strong>4 A / 20 W</strong> for 200 pixels. This is only a starting estimate; bright white and high brightness can raise the load considerably. Measure current with the real palettes, audio response, and configured brightness.</li>
+        </ul>
+        <p>For a robust layout:</p>
+        <ul>
+          <li>Use a regulated <strong>5 V supply/buck converter</strong> with appropriate continuous-current rating and margin. If you enforce the 40 W design limit in software, a 5 V, 10 A class output is a reasonable starting point to evaluate; if the build must tolerate unrestricted full-white, size for at least 12 A plus margin (for example, a 15 A class system). Check the converter's thermal performance and real output rating.</li>
+          <li>Run suitably thick power and ground wiring to the strands, with power injection at the start of each strand and additional injection if voltage drop measurements require it. Fuse the battery/main feed and choose branch fuses based on wire ampacity and measured branch current.</li>
+          <li>Add a <strong>500–1000 µF capacitor</strong> across the LED supply near its distribution point. Use a <strong>300–500 Ω series resistor on each data line</strong>, near the first pixel, unless the pixel product already incorporates suitable protection.</li>
+          <li>A 3.3 V MCU output driving 5 V pixels should normally use a 5 V logic-level buffer (for example, an AHCT-family buffer). The SCORPIO includes shifting for its eight NeoPixel outputs; most ESP32-S3 boards do not. Keep signal wiring short and ensure common ground.</li>
+          <li>Power the LEDs from the dedicated 5 V rail, not from the MCU regulator or USB pin. Follow the LED manufacturer's sequencing and wiring recommendations.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="microphone">
+        <h2 id="microphone">Selecting an I2S microphone</h2>
+        <p>Use a <strong>digital I2S MEMS microphone module</strong> that exposes the microphone data, bit clock (BCLK/SCK), and word-select/left-right clock (WS/LRCLK); some also need or support MCLK. Confirm voltage compatibility, pinout, I2S slot format, supply voltage, and the current lifecycle/availability of the exact part. Connect the mic to a dedicated I2S receive peripheral if available, keep its clock/data wiring short, and join grounds.</p>
+        <p>Do not pick a microphone solely because an old example uses it: TDK lists the ICS-43434 as <strong>end-of-life</strong>. INMP441 breakout modules are common, but verify that the specific module is genuine, available, and suitable for your supply and I2S format. Prefer an in-production microphone from a traceable supplier.</p>
+        <p>For ambient <strong>amplitude</strong> response, a full spectrum analyzer is unnecessary. A practical starting point is mono audio at 16 kHz, receive samples by I2S DMA, compute a short block's peak or RMS level, apply an envelope/attack-release smoother, then map the result to brightness, palette motion, or another animation parameter. At 16 kHz and 60 FPS, a frame corresponds to about <strong>267 samples</strong>. Confirm how the selected driver places 24-bit mic data in 32-bit I2S slots and handle sign extension/scaling correctly. Keep audio capture running continuously; the LED frame loop should consume the most recent amplitude value without blocking for a whole audio buffer.</p>
+      </section>
+
+      <section aria-labelledby="battery">
+        <h2 id="battery">Rechargeable battery and runtime sizing</h2>
+        <p>First decide the required runtime and measure average power at representative brightness and sound levels. Battery capacity in watt-hours is more useful than mAh when comparing different pack voltages:</p>
+        <pre><code>battery energy (Wh) = nominal pack voltage (V) × capacity (Ah)
+usable load energy (Wh) ≈ battery Wh × allowed usable fraction × converter efficiency
+runtime (hours) ≈ usable load energy (Wh) ÷ average system load (W)</code></pre>
+        <p>Use the pack manufacturer's rated capacity and discharge-current limit. Allow for cell aging, temperature, converter losses, and a reserve; do not calculate runtime from peak LED power unless you intentionally want a conservative worst-case estimate.</p>
+        <p><strong>Illustrative example:</strong> a 2-cell series (2S) lithium-ion pack rated 7.4 V, 5 Ah contains about <strong>37 Wh</strong> nominally. If 85% is treated as usable and the 5 V converter is 90% efficient, about 28 Wh reaches the load. That is approximately <strong>1.4 hours at 20 W average</strong>, or <strong>0.7 hours at 40 W average</strong>. Actual runtime will differ; measure it. A higher-voltage pack can reduce battery-side current for a given power, but requires a buck converter rated for the full 5 V LED current.</p>
+        <p>For a portable build, compare these practical options:</p>
+        <ol>
+          <li>A <strong>commercial protected battery pack</strong> (for example, a 2S or 3S Li-ion pack with protection/BMS) plus a correctly rated 5 V buck converter. Use a charger matched to the pack's series count and chemistry. This is often practical for a several-amp LED load.</li>
+          <li>A <strong>single-cell Li-ion/LiPo pack plus 5 V boost converter</strong> only if the boost converter and battery can supply the high input current. At 40 W output, a 1S pack may need well over 10 A after conversion losses; many small boost boards and pouch cells cannot safely provide that.</li>
+          <li>A <strong>USB power bank</strong> only if its 5 V port is explicitly rated for the required continuous current and it does not shut off at changing loads. Many ordinary power banks cannot supply the 8–12 A this design could need from a single 5 V output.</li>
+        </ol>
+        <p>Use a reputable, protected pack with adequate continuous-discharge rating, a matching charger, a main fuse close to the battery, strain relief, and an enclosure that prevents puncture or shorting. Do not build a pack from loose lithium cells without the required cell-matching, protection, charging, and battery-pack expertise. Keep the high-current LED rail separate from the board's 3.3 V logic rail except for common ground.</p>
+      </section>
+
+      <section aria-labelledby="test-plan">
+        <h2 id="test-plan">A low-risk selection and test plan</h2>
+        <ol>
+          <li>Buy one candidate MCU board, one I2S mic breakout, and a short/sample quantity of the intended pixel type. Confirm the supplier's exact pixel datasheet and strand current before ordering all 200 LEDs.</li>
+          <li>Prove microphone input alone: stream I2S samples, inspect the signed sample range, and display or log a stable amplitude envelope in a quiet room and with sound.</li>
+          <li>Prove eight-strand LED output separately using 25 pixels per lane, a conservative brightness limit, proper level shifting, and a current-limited bench supply. Verify all eight strands and color order. For ESP32-S3, test eight-lane parallel output with the mic I2S driver enabled at the same time; do not assume peripheral compatibility from chip specs alone.</li>
+          <li>Port the coordinate mapping to 200 entries and the physical spiral. Keep the render loop at 60 FPS from a timer and process audio in short, non-blocking DMA buffers.</li>
+          <li>Measure worst-case render time, missed frames/audio overruns, LED current, voltage at the far end of each strand, and converter temperature. Test bright white at the intended maximum brightness. Adjust wiring, injection, fuses, and converter rating before using the battery.</li>
+          <li>Run the full pattern and audio mix from the battery, measure average power, then calculate runtime with the formula above. Retain a hardware current/brightness safety margin even if the firmware includes a power estimate.</li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="references">
+        <h2 id="references">References</h2>
+        <ul class="reference-list">
+          <li><a href="https://www.espressif.com/en/products/socs/esp32-s3">ESP32-S3 product overview (Espressif)</a> — CPU, SRAM, peripherals, and connectivity.</li>
+          <li><a href="https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/api-reference/peripherals/i2s.html">ESP32-S3 I2S documentation (ESP-IDF)</a> — I2S receive, DMA, clocking, and slots.</li>
+          <li><a href="https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/api-reference/peripherals/rmt.html">ESP32-S3 RMT documentation (ESP-IDF)</a> and <a href="https://docs.espressif.com/projects/esp-faq/en/latest/software-framework/peripherals/rmt.html">Espressif RMT FAQ</a> — RMT channels and DMA constraints.</li>
+          <li><a href="https://github.com/FastLED/FastLED/blob/master/src/platforms/esp/32/README.md">FastLED ESP32 platform notes</a> — documented ESP32 RMT and parallel-I2S backends.</li>
+          <li><a href="https://learn.adafruit.com/introducing-feather-rp2040-scorpio/overview">Feather RP2040 SCORPIO guide (Adafruit)</a> — eight concurrent PIO/DMA NeoPixel outputs and onboard level shifting.</li>
+          <li><a href="https://www.pjrc.com/store/teensy32.html">Teensy 3.2 product page (PJRC)</a> — discontinued-product notice.</li>
+          <li><a href="https://www.pjrc.com/store/teensy40.html">Teensy 4.0 product page (PJRC)</a> — processor, FPU, I2S, and OctoWS2811 information.</li>
+          <li><a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels">NeoPixel power guide (Adafruit)</a> and <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/best-practices">best practices</a> — current estimates, power, wiring, resistor, and capacitor guidance.</li>
+          <li><a href="https://www.invensense.tdk.com/en-us/products/microphone/ics-43434">ICS-43434 product page (TDK InvenSense)</a> — example I2S mic specifications and end-of-life status.</li>
+        </ul>
+      </section>
+
+      <footer class="page-footer">Hardware planning reference · Dark theme · Responsive navigation</footer>
+    </main>
+  </div>
+</body>
+</html>
